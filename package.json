@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "whop apps deploy"
+    "deploy": "whop apps deploy",
+    "test": "node --test src/billing/"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.67.0",

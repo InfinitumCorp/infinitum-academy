@@ -165,6 +165,16 @@ main,footer{overflow-x:clip}
 .dollar b{display:block;font-weight:300;font-size:clamp(120px,15vw,230px);line-height:.82;letter-spacing:-.07em}
 .dollar span{display:block;margin-top:22px;font-size:13px;color:var(--muted)}
 
+/* ---------- membership ---------- */
+.member .feature{grid-template-columns:minmax(0,640px)}
+.member .feature article>p.m-status{margin:28px 0;color:var(--ink);font-size:17px}
+.member button.primary{border:0;font:inherit;font-size:14px}
+.member button.primary:disabled,.member button.textlink:disabled{opacity:.5;cursor:default}
+.member button.textlink{background:none;border-width:0 0 1px;color:inherit;padding:0 0 3px}
+.member .m-act{display:flex;flex-wrap:wrap;align-items:center;gap:22px}
+.member .m-note{font-size:15px;color:var(--muted);margin-top:22px}
+.member .m-err{color:#b3261e}
+
 /* ---------- contact ---------- */
 .close h2{font-size:clamp(56px,8.4vw,132px);line-height:1;letter-spacing:-.06em;color:var(--soft);margin-bottom:80px}
 .close h2 .lit,.close h2 .w.on{color:var(--ink)}
@@ -299,6 +309,8 @@ footer nav a:hover{color:var(--accent)}
 </style>
 <link rel="stylesheet" href="/src/i18n/i18n.css">
 <script type="module" src="/src/i18n/start.js"></script>
+<script src="/cumulus-id.js" data-client="academy" defer></script>
+<script type="module" src="/src/billing/membership.js"></script>
 </head>
 <body>
 <header class="top" id="top">
@@ -412,6 +424,34 @@ footer nav a:hover{color:var(--accent)}
         <a class="primary" href="https://whop.com/infinitum-corporation/" target="_blank" rel="noopener">Browse the handbooks <span class="ar" aria-hidden="true">↗</span></a>
       </div>
       <div class="dollar rv" style="--a:unfold"><b>$1</b><span>Per handbook, in the Infinitum store</span></div>
+    </div>
+  </section>
+
+  <section class="sec member" id="membership" data-sec data-revenue-url="https://infinitum-revenue.infinitumcorp.workers.dev">
+    <div class="head">
+      <p class="label">Membership</p>
+      <h2 class="h2 rv">Join the Academy.</h2>
+      <p class="intro rv" style="--d:.1s">A monthly membership for members of the Infinitum Academy. Sign in with your Cumulus ID to join or manage your membership. Cancel any time from Manage billing.</p>
+    </div>
+    <div class="feature">
+      <article>
+        <h3><span data-m="name">Infinitum Academy membership</span><small data-m="price">$29 / month</small></h3>
+        <p class="m-status" data-m="status" aria-live="polite">Sign in to see your membership.</p>
+        <p class="m-note" data-m="notice" role="status" hidden></p>
+        <div data-m="signed-out">
+          <span data-cumulus-id></span>
+          <p class="m-note">New here? Create a Cumulus ID and you come back signed in.</p>
+        </div>
+        <div data-m="signed-in" hidden>
+          <div class="m-act">
+            <button type="button" class="primary" data-m="join">Become a member <span class="ar" aria-hidden="true">→</span></button>
+            <button type="button" class="textlink" data-m="manage" hidden>Manage billing</button>
+          </div>
+          <p class="m-note"><span data-cumulus-id></span></p>
+        </div>
+        <p class="m-note m-err" data-m="error" role="alert" hidden></p>
+        <p class="m-note">Secure checkout by Stripe. Your card details never touch this site.</p>
+      </article>
     </div>
   </section>
 
