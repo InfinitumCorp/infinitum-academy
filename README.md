@@ -21,3 +21,7 @@ whop apps builds promote <build id>
 ```
 
 The first command uploads a preview build and prints its id. The second makes that build the live site.
+
+## Sign-in
+
+The header carries the Cumulus://ID account bar (`https://id.cumuluscloud.app/id/bar.js`, client `academy`): **Sign in** (and **Create a Cumulus://ID** on wide screens), then the account menu and Infinitum product launcher. The page's origin, `https://infinitum-academy.whop.site`, must be registered for `academy` in InfinitumCorp/cumulus-id `src/clients.ts`.
