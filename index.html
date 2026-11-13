@@ -71,6 +71,10 @@ main,footer{overflow-x:clip}
 .top nav a[aria-current="location"]::after,.top nav a:hover::after{transform:scaleX(1)}
 .enroll{padding:10px 22px;border:1px solid var(--ink);text-decoration:none;font-size:13px;transition:background .2s,color .2s}
 .enroll:hover{background:var(--ink);color:var(--paper)}
+.cid{display:flex;align-items:center;flex:none}.cid-lg{display:none}
+@media (min-width:1440px){.cid-lg{display:flex}.cid-sm{display:none}}
+/* Room for the account bar before the header wraps at 1000px. */
+@media (min-width:1001px) and (max-width:1279px){.top{gap:2vw}.top nav{gap:20px}}
 
 /* ---------- shared ---------- */
 .sec{padding:110px var(--gr) 110px var(--gl);border-top:1px solid var(--line)}
@@ -299,6 +303,8 @@ footer nav a:hover{color:var(--accent)}
 </style>
 <link rel="stylesheet" href="/src/i18n/i18n.css">
 <script type="module" src="/src/i18n/start.js"></script>
+<!-- The Cumulus://ID account bar (sign-in, account menu, product launcher). -->
+<script src="https://id.cumuluscloud.app/id/bar.js" data-client="academy" defer></script>
 </head>
 <body>
 <header class="top" id="top">
@@ -316,6 +322,8 @@ footer nav a:hover{color:var(--accent)}
   </nav>
   <div id="lang-switch" class="lang-slot"></div>
   <a class="enroll" href="#courses">Enroll</a>
+  <div class="cid cid-lg" data-cumulus-bar></div>
+  <div class="cid cid-sm" data-cumulus-bar data-create="false"></div>
 </header>
 
 <main>
